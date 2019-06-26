@@ -38,6 +38,9 @@
         "classmap": [
             "database/seeds",
             "database/factories"
+        ],
+        "files": [
+            "app/helpers/helpers.php"
         ]
     },
     "autoload-dev": {
@@ -46,11 +49,7 @@
         }
     },
     
-    "require": {
-        "php": ">=5.5.9",
-        "laravel/framework": "5.1.*",
-        "tymon/jwt-auth": "0.5.*"
-    },
+   
     "minimum-stability": "dev",
     "prefer-stable": true,
     "scripts": {
