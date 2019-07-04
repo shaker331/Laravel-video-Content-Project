@@ -66,6 +66,23 @@ Users Create
                       @enderror
                         </div>
                       </div>
+                      <div class="col-md-4">
+                          <div class="form-group">
+                            <label class="bmd-label-floating">User Status</label>
+                            <select name="group" id="" class="form-control @error('group') is-invalid @enderror">
+  
+                              <option value="1">Admin</option>
+                              <option value="0">User</option>
+  
+                            </select>
+                            @error('group')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                          </div>
+                        </div>
+                        
                     </div>
                     <button type="submit" class="btn btn-primary pull-right">Add User</button>
                     <div class="clearfix"></div>

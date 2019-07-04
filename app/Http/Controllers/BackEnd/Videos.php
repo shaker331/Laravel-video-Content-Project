@@ -115,7 +115,7 @@ class Videos extends BackEndController
         $videos=Video::findOrFail($id);
         $cats=Category::all();
         $skills=Skill::all();
-        $tags=Tag::all();
+        $tags=Tag::get();
         $comments=Comment::all();
         // $videosComment=$videos->comments->first()->comment;
 
@@ -192,18 +192,16 @@ class Videos extends BackEndController
 
         $this->validate($request,[
             "comment"=> ['required', 'string'],
-            "video_id"=> 'required',
 
          ]);
+
          $comments= new Comment; 
            $comments->comment= $request->comment;
            $comments->user_id=auth()->user()->id;
            $comments->video_id=$request->video_id;
-           dd($comments);
            $comments->save();
-dd($comments);
-         $videos1=Video::find($id);
-        return redirect()->route('video.index',['video'=>$comments->id,'#comments']);
+
+        return redirect()->route('video.edit',['video'=>$comments->video_id]);
 
     }
     public function updateComment(Request $request, $id)
@@ -217,8 +215,9 @@ dd($comments);
     }
     public function destroyComment($id)
     {
-        $videos1=Video::find($id);
+
         $comments=Comment::findOrFail($id)->delete();
-        return redirect()->route('video.edit',['video'=>$videos1->id,'#comments']);
+
+        return redirect()->back();
     }
 }

@@ -13,6 +13,6 @@ class Category extends Model
 
 public function videos()
 {
-    return $this->hasMany('App\Models\Video');
+    return $this->hasMany('App\Models\Video','category_id');
 }
 }

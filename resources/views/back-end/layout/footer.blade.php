@@ -4,9 +4,9 @@
               <nav class="float-left">
                 <ul>
                   <li>
-                    <a href="https://www.creative-tim.com">
-                      Creative Tim
-                    </a>
+                    <a href="{{route('admin.home')}}">
+                            Admin  Page      
+                                      </a>
                   </li>
                 </ul>
               </nav>
@@ -14,8 +14,7 @@
                 &copy;
                 <script>
                   document.write(new Date().getFullYear())
-                </script>, made with <i class="material-icons">favorite</i> by
-                <a href="https://www.creative-tim.com" target="_blank">Creative Tim</a> for a better web.
+                </script>, made with <i class="material-icons">favorite</i> by Shaker
               </div>
               <!-- your footer here -->
             </div>

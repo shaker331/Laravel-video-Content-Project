@@ -10,7 +10,7 @@
                               
                              
                             </div>
-                            <input type="hidden" class="form-control " name="video-id" value="{{$videos->id}}">
+                            <input type="hidden" class="form-control " name="video_id" value="{{$videos->id}}">
     
                           </div>
                           

@@ -45,6 +45,9 @@ Users Control
                       <th>
                     Email                       
                     </th>
+                    <th>
+                      User Status                       
+                      </th>
                     <th class=" text-right">
                     Control                       
                     </th>
@@ -63,7 +66,13 @@ Users Control
                           <td>
                                 {{$user->email}}
                           </td>
-                          
+                          <td>
+                            @if ($user->group == 1)
+                                Admin
+                            @else
+                               User 
+                            @endif
+                      </td>
                           <td class="td-actions text-right">
                               <a href="{{route('users.edit',["user"=>$user])}}"> <button type="button" rel="" title="Edit User" class="btn btn-white btn-link btn-sm">
                                   <i class="material-icons">edit</i>

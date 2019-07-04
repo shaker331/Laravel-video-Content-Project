@@ -118,15 +118,14 @@ video Control
                          <label class="bmd-label-floating">skills </label>
                          <select name="{{ $input}}" id="" class="form-control @error('skills') is-invalid @enderror" multiple style="height:100px">
                            @foreach ($skills as $skill)
-                           {{-- @if ($skill->name == $videos->skills->id) --}}
- 
+                           @if ($skill->name == $videos->skills) 
                            
                            <option value="{{$skill->id}}" selected>{{$skill->name}}</option>
                            
-                           {{-- @else --}}
+                           @else
                            <option value="{{$skill->id}}" >{{$skill->name}}</option>
  
-                           {{-- @endif --}}
+                           @endif
                            @endforeach
                          </select>
                          @error('skills')
@@ -144,15 +143,15 @@ video Control
                         <label class="bmd-label-floating">Tags </label>
                         <select name="{{ $input}}" id="" class="form-control @error('tags') is-invalid @enderror" multiple style="height:100px">
                           @foreach ($tags as $tag)
-                          {{-- @if ($tag->id == $videos->tags->id) --}}
+                          @if ($tag->id == $videos->tag_id)
 
                           
                           <option value="{{$tag->id}}" selected>{{$tag->name}}</option>
                           
-                          {{-- @else --}}
+                          @else
                           <option value="{{$tag->id}}" >{{$tag->name}}</option>
 
-                          {{-- @endif --}}
+                          @endif
                           @endforeach
                         </select>
                         @error('tags')
@@ -249,8 +248,10 @@ video Control
                 </div>
             
                 <div class="card-body">
+                  {{-- <!-- create Comment --}}
                   @include('back-end.comments.create')
 
+                  {{-- end create Comment --}}
             </div>
           </div>
           </div>

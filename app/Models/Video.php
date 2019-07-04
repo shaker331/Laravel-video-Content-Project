@@ -27,10 +27,14 @@ class Video extends Model
 
 public function tags()
 {
-    return $this->belongsToMany('App\Models\Tag', 'tags_videos', 'video_id', 'tag_id');
+    return $this->belongsToMany('App\Models\Tag', 'tags_videos');
 }
 public function comments()
 {
     return $this->hasMany('App\Models\Comment');
+}
+public function scopePublished()
+{
+    return $this->where('published',1);
 }
 }

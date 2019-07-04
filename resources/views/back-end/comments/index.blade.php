@@ -14,21 +14,21 @@
                  </thead>
                       <tbody>
                         
-                            @foreach ($videos->comments as $comment)
+                            @foreach ($videos->comments()->orderby('created_at','desc')->get() as $comment)
                       
                         <tr>
                           <td>
-                             <span style="color:lightpink">User Name:  </span> {{$comment->user->name}} <br>
-                             <span style="color:palegreen">Created at: </span> {{$comment->created_at}} <br>
-                             <span style="color:thistle">{{$comment->comment}} </span><br>
+                             <span style="color:lightpink">User Name:  </span> {{$comment->user->name}} 
+                             <span style="color:palegreen">Created at: </span> {{$comment->created_at}} 
+                             <span style="color:thistle">{{$comment->comment}} </span>
                             </td> 
-                            <br>
+                            
                           
 
                           </td> 
                            
                           <td class="td-actions text-right">
-                              <button   onclick="$(this).closest('tr').next('tr').slideToggle()"
+                              <button   
                                 type="button" rel="" title="Edit comment" class="btn btn-white btn-link btn-sm">
                                   <i class="material-icons">edit</i>
                                 </button> 
@@ -42,7 +42,7 @@
                             </tr>
                         
                            
-                            <tr style="display:none">
+                            <tr >
                         <td colspan="4">
                         <form action="{{route('updateComment',['id'=>$comment->id])}}" method="POST">
                             @csrf

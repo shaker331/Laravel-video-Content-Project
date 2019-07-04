@@ -16,6 +16,7 @@ class Users extends BackEndController
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'group'=>'required',
         ]);
     }
 
@@ -54,15 +55,16 @@ class Users extends BackEndController
            "name"=> 'required',
            'email'=> ['required', 'string', 'email', 'max:255', 'unique:users'],
            'password'=>'required',
+           'group'=>'required',
 
         ]);
-        $users=User::create($request,[
+        $users=User::create([
           'name'=>$request->name,
           'email'=>$request->email,
           'password'=>Hash::make($request->password),
+          'group'=>$request->group,
 
         ]);
-        $users->save();
         return redirect()->route('users.index');
     }
 
@@ -103,15 +105,20 @@ class Users extends BackEndController
     {
         $this->validate($request,[
             "name"=> 'required',
-            'email'=> ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password'=>'required',
- 
+            'email'=> ['required', 'string', 'email', 'max:255', ],
+            'group'=>'required',
          ]);
          $users=User::findOrFail($id);
-         $users->name=$request->name;
-         $users->email=$request->email;
-         $users->password=Hash::make($request->password);
-         $users->save();
+
+            $requestArray=[
+                'name'=>$request->name,
+                'email'=>$request->email,
+                'group'=>$request->group,
+            ];
+        if (request()->has('password') && request()->get('password')!= "") {
+            $requestArray= $requestArray+['password'=>Hash::make($request->password)];
+        }
+         $users->update($requestArray); 
          return redirect()->route('users.index');
     }
 

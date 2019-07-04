@@ -1,12 +1,20 @@
 <?php
 
 namespace App\Http\Controllers\BackEnd;
-
+use App\Models\Video;
 
 class Home extends BackEndController
 {
 public function index(){
-
-return view('back-end.home');
+$videost=Video::orderby('created_at','desc')->take(4)->get();
+return view('back-end.home',compact('videost'));
 }
+public function destroy1($id)
+    {
+    
+        $videos=Video::findOrFail($id)->delete();
+        return redirect()->route('admin.home');
+    }
+
+
 }

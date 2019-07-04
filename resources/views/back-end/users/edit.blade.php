@@ -49,6 +49,21 @@ User Edit
                           <input type="password" class="form-control" name="password" value="{{$users->password}}">
                         </div>
                       </div>
+                      <div class="col-md-4">
+                          <div class="form-group">
+                            <label class="bmd-label-floating">User Status</label>
+                            <select name="group" id="" class="form-control @error('group') is-invalid @enderror">
+  
+                              <option value="1 " {{isset($users->group)?'selected':''}}>Admin</option>
+                              <option value="0"{{isset($users->group)?'selected':'' }}>User</option>
+                            </select>
+                            @error('group')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                          </div>
+                        </div>
                     </div>
                     <button type="submit" class="btn btn-primary pull-right">Update Profile</button>
                     <div class="clearfix"></div>

@@ -6,9 +6,9 @@
         Tip 2: you can also add an image using data-image tag
     -->
         <div class="logo">
-          <a href="http://www.creative-tim.com" class="simple-text logo-normal">
-            Creative Tim
-          </a>
+          <a href="{{route('admin.home')}}" class="simple-text logo-normal">
+              Admin Home
+              </a>
         </div>
         <div class="sidebar-wrapper">
           <ul class="nav">
@@ -59,7 +59,12 @@
                 <p>Videos</p>
               </a>
             </li>
-            
+            <li class="nav-item active  ">
+                <a class="nav-link" href="{{route('message.index')}}">
+                  <i class="material-icons">Messages</i>
+                  <p>Messages</p>
+                </a>
+              </li>
             <!-- your sidebar here -->
           </ul>
         </div>

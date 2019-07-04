@@ -15,6 +15,7 @@ Admin|Home Page
 Home Page
 @endslot
 @endcomponent
+@include('back-end.dashboard')
 @endsection
 @push('js')
     <script>
