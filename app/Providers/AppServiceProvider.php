@@ -37,17 +37,13 @@ class AppServiceProvider extends ServiceProvider
     view()->share('videos',Video::Published()->get());
     view()->share('users',User::get());
     view()->share('pages',Page::get());
-    view()->share('music',Category::find(5));
-    view()->share('fashion',Category::find(8));
-    view()->share('sport',Category::find(7));
-    view()->share('movie',Category::find(6));
-    view()->share('tv',Category::find(9));
-    view()->share('catcount',Category::find(5)->videos()->count());
-    view()->share('catcount1',Category::find(8)->videos()->count());
-    view()->share('catcount2',Category::find(7)->videos()->count());
-    view()->share('catcount3',Category::find(6)->videos()->count());
-    view()->share('catcount4',Category::find(9)->videos()->count());
+    view()->share('music',Category::find(1));
+    view()->share('fashion',Category::find(4));
+    view()->share('sport',Category::find(3));
+    view()->share('movie',Category::find(2));
+    view()->share('tv',Category::find(5));
+    view()->share('categories',Category::with('videos')->orderby('name','desc')->get());
 
-
+    
     }
 }

@@ -1,5 +1,6 @@
 
 @include('front-end.include.header')
+<title>{{$title}} </title>
 
 <!-- SECTION -->
 <div class="section">
@@ -50,8 +51,7 @@
             <a href="#" class="post-tag">{{$video->category->name}}</a>
             <a href="{{route('showvideo',['id'=>$video->id,'slug'=>slug($video->name)])}}" class="post-title">{{$video->name}}</a>
             <div class="post-meta">
-                <a href="#"><img src="img/core-img/chat2.png" alt=""> 5</a>
-                <a href="#"><img src="img/core-img/like2.png" alt=""> 12k</a>
+                <a href="#"><img src="img/core-img/chat2.png" alt=""> {{$video->comments->count()}}</a>
             </div>
         </div>
     </div>

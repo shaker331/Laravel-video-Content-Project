@@ -1,7 +1,7 @@
 
 @include('front-end.include.header')
+<title>{{$title}} </title>
 
-<!-- SECTION -->
 <div class="section">
     <!-- container -->
     <div class="container">

@@ -19,11 +19,11 @@ class Pages extends Seeder
             'name'=>$faker->word,
             'meta_keywords'=>$faker->name,
             'meta_des'=>$faker->name,
-            'des'=>$faker->name,
+            'desc'=>$faker->name,
 
         ];
         \App\Models\Page::create($Array);
        }
     }
-    }
+    
 }

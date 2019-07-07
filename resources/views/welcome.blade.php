@@ -1,5 +1,7 @@
 
     @include('front-end.include.header')
+    <title>{{$title}} </title>
+
     <!-- ##### Hero Area Start ##### -->
     <div class="hero-area d-flex flex-wrap">
 
@@ -19,8 +21,7 @@
                             <div class="post-meta">
                                 <a href="{{route('profile',['id'=>$first_video->user->id,'slug'=>slug($first_video->user->name)])}}"><img src="img/core-img/author.png" alt=""> {{$first_video->user->name}}</a>
                                 <a href="#"><img src="img/core-img/calender.png" alt=""> {{$first_video->created_at->diffForHumans()}}</a>
-                                <a href="#"><img src="img/core-img/chat.png" alt=""> 5</a>
-                                <a href="#"><img src="img/core-img/like.png" alt=""> 12k</a>
+                                <a href="#"><img src="img/core-img/chat.png" alt=""> {{$first_video->comments->count()}}</a>
                             </div>
                         </div>
                     </div>
@@ -43,8 +44,7 @@
                             <div class="post-meta">
                                 <a href="#"><img src="img/core-img/author.png" alt=""> {{$second_video->user->name}}</a>
                                 <a href="#"><img src="img/core-img/calender.png" alt=""> {{$second_video->created_at->diffForHumans()}}</a>
-                                <a href="#"><img src="img/core-img/chat.png" alt=""> 5</a>
-                                <a href="#"><img src="img/core-img/like.png" alt=""> 12k</a>
+                                <a href="#"><img src="img/core-img/chat.png" alt="">{{$second_video->comments->count()}}</a>
                             </div>
                         </div>
                     </div>
@@ -118,8 +118,7 @@
                                         <div class="post-meta">
                                             <a href="#"><img src="img/core-img/author2.png" alt=""> {{$latest->user->name}}</a>
                                             <a href="#"><img src="img/core-img/calendar2.png" alt=""> {{$latest->created_at->diffForHumans()}}</a>
-                                            <a href="#"><img src="img/core-img/chat2.png" alt=""> 5</a>
-                                            <a href="#"><img src="img/core-img/like2.png" alt=""> 12k</a>
+                                            <a href="#"><img src="img/core-img/chat2.png" alt=""> {{$latest->comments->count()}}</a>
                                         </div>
                                     </div>
                                 </div>
@@ -149,9 +148,8 @@
 
                 <div class="row">
                     <div class="col-12 col-lg-6">
-                        @foreach ($music->videos()->Published()->orderBy('created_at','desc')->take(1)->get() as $video)
-                            
-                        
+                        @foreach ($music1->take(1) as $video)
+                        {{-- take(1)->get() --}}
                         <!-- Single Welcome Post -->
                         <div class="single-welcome-post style-2 bg-img mb-30 wow fadeInUp" data-wow-delay="300ms" >
                                 <img src="{{$video->image}}" alt="">
@@ -164,12 +162,11 @@
                                 <div class="single-blog-post white">
                                     <div class="blog-content">
                                         {{-- <a href="#" class="post-tag">{{$video->tags->name}}</a> --}}
-                                        <a href="#" class="post-title">{{$video->name}}</a>
+                                        <a href="{{route('showvideo',['id'=>$video->id,'slug'=>slug($video->name)])}}" class="post-title">{{$video->name}}</a>
                                         <div class="post-meta">
                                             <a href="#"><img src="img/core-img/author.png" alt=""> {{$video->user->name}}</a>
                                             <a href="#"><img src="img/core-img/calender.png" alt=""> {{$video->created_at->diffForHumans()}}</a>
-                                            <a href="#"><img src="img/core-img/chat.png" alt=""> 5</a>
-                                            <a href="#"><img src="img/core-img/like.png" alt=""> 12k</a>
+                                            <a href="#"><img src="img/core-img/chat.png" alt=""> {{$video->comments->count()}}</a>
                                         </div>
                                     </div>
                                 </div>
@@ -181,7 +178,7 @@
 
                     <div class="col-12 col-lg-6">
                         <div class="row">
-                                @foreach ($music->videos()->Published()->orderBy('created_at','desc')->skip(1)->take(4)->get() as $video)
+                                @foreach ($music1->take(4) as $video )
 
                             <!-- Single Blog Post -->
                             <div class="col-md-6">
@@ -193,12 +190,11 @@
                                     </div>
                                     <div class="blog-content">
                                         {{-- <a href="#" class="post-tag">{{$video->tags->name}}</a> --}}
-                                        <a href="#" class="post-title">{{$video->name}}</a>
+                                        <a href="{{route('showvideo',['id'=>$video->id,'slug'=>slug($video->name)])}}" class="post-title">{{$video->name}}</a>
                                         <div class="post-meta d-flex justify-content-between">
                                             <a href="#"><img src="img/core-img/calendar2.png" alt="">{{$video->created_at->diffForHumans()}}</a>
                                             <div class="d-flex">
-                                                <a href="#"><img src="img/core-img/chat2.png" alt=""> 5</a>
-                                                <a href="#"><img src="img/core-img/like2.png" alt=""> 12k</a>
+                                                <a href="#"><img src="img/core-img/chat2.png" alt=""> {{$video->comments->count()}}</a>
                                             </div>
                                         </div>
                                     </div>
@@ -227,7 +223,7 @@
                         <div class="section-heading wow fadeInUp" data-wow-delay="200ms">
                             <h2>{{$fashion->name}}</h2>
                         </div>
-                        @foreach ($fashion->videos()->Published()->orderBy('created_at','desc')->take(1)->get() as $video)
+                        @foreach ($fashion1->take(1)  as $video)
 
                         <!-- Single Blog Post -->
                         <div class="single-blog-post style2 mb-50 wow fadeInUp" data-wow-delay="300ms">
@@ -238,19 +234,18 @@
                             </div>
                             <div class="blog-content">
                                 {{-- <a href="#" class="post-tag">Featured</a> --}}
-                                <a href="#" class="post-title">{{$video->name}}</a>
+                                <a href="{{route('showvideo',['id'=>$video->id,'slug'=>slug($video->name)])}}" class="post-title">{{$video->name}}</a>
                                 <div class="post-meta">
                                     <a href="#"><img src="img/core-img/author2.png" alt=""> {{$video->user->name}}</a>
                                     <a href="#"><img src="img/core-img/calendar2.png" alt=""> {{$video->created_at->diffForHumans()}}</a>
-                                    <a href="#"><img src="img/core-img/chat2.png" alt=""> 5</a>
-                                    <a href="#"><img src="img/core-img/like2.png" alt=""> 12k</a>
+                                    <a href="#"><img src="img/core-img/chat2.png" alt=""> {{$video->comments->count()}}</a>
                                 </div>
                             </div>
                         </div>
                         @endforeach
                 
                    
-                        @foreach ($fashion->videos()->Published()->orderBy('created_at','desc')->skip(1)->take(3)->get() as $video)
+                        @foreach ($fashion1->take(3) as $video)
 
                         <!-- Single Blog Post -->
                         <div class="single-blog-post style4 d-flex mb-30 wow fadeInUp" data-wow-delay="500ms">
@@ -261,10 +256,9 @@
                             </div>
                             <div class="blog-content">
                                 {{-- <a href="#" class="post-tag">Featured</a> --}}
-                                <a href="#" class="post-title">{{$video->name}}</a>
+                                <a href="{{route('showvideo',['id'=>$video->id,'slug'=>slug($video->name)])}}" class="post-title">{{$video->name}}</a>
                                 <div class="post-meta">
-                                    <a href="#"><img src="img/core-img/chat2.png" alt=""> 5</a>
-                                    <a href="#"><img src="img/core-img/like2.png" alt=""> 12k</a>
+                                    <a href="#"><img src="img/core-img/chat2.png" alt=""> {{$video->comments->count()}}</a>
                                 </div>
                             </div>
                         </div>
@@ -276,7 +270,7 @@
                             <div class="section-heading wow fadeInUp" data-wow-delay="200ms">
                             <h2>{{$sport->name}}</h2>
                         </div>
-                        @foreach ($sport->videos()->Published()->orderBy('created_at','desc')->take(1)->get() as $video)
+                        @foreach ($sport1->take(1) as $video)
 
                         <!-- Single Blog Post -->
                         <div class="single-blog-post style2 mb-50 wow fadeInUp" data-wow-delay="300ms">
@@ -287,17 +281,16 @@
                             </div>
                             <div class="blog-content">
                                 {{-- <a href="#" class="post-tag">Featured</a> --}}
-                                <a href="#" class="post-title">{{$video->name}}</a>
+                                <a href="{{route('showvideo',['id'=>$video->id,'slug'=>slug($video->name)])}}" class="post-title">{{$video->name}}</a>
                                 <div class="post-meta">
                                     <a href="#"><img src="img/core-img/author2.png" alt=""> {{$video->user->name}}</a>
                                     <a href="#"><img src="img/core-img/calendar2.png" alt=""> {{$video->created_at->diffForHumans()}}</a>
-                                    <a href="#"><img src="img/core-img/chat2.png" alt=""> 5</a>
-                                    <a href="#"><img src="img/core-img/like2.png" alt=""> 12k</a>
+                                    <a href="#"><img src="img/core-img/chat2.png" alt=""> {{$video->comments->count()}}</a>
                                 </div>
                             </div>
                         </div>
                         @endforeach
-                        @foreach ($sport->videos()->Published()->orderBy('created_at','desc')->skip(1)->take(3)->get() as $video)
+                        @foreach ($sport1->take(3) as $video)
 
                         <!-- Single Blog Post -->
                         <div class="single-blog-post style4 d-flex mb-30 wow fadeInUp" data-wow-delay="500ms">
@@ -308,10 +301,9 @@
                             </div>
                             <div class="blog-content">
                                 {{-- <a href="#" class="post-tag">Featured</a> --}}
-                                <a href="#" class="post-title">{{$video->name}}</a>
+                                <a href="{{route('showvideo',['id'=>$video->id,'slug'=>slug($video->name)])}}" class="post-title">{{$video->name}}</a>
                                 <div class="post-meta">
-                                    <a href="#"><img src="img/core-img/chat2.png" alt=""> 5</a>
-                                    <a href="#"><img src="img/core-img/like2.png" alt=""> 12k</a>
+                                    <a href="#"><img src="img/core-img/chat2.png" alt="">{{$video->comments->count()}}</a>
                                 </div>
                             </div>
                         </div>
@@ -323,7 +315,7 @@
                             <div class="section-heading wow fadeInUp" data-wow-delay="200ms">
                             <h2>{{$movie->name}}</h2>
                         </div>
-                        @foreach ($movie->videos()->Published()->orderBy('created_at','desc')->take(1)->get() as $video)
+                        @foreach ($movie1->take(1) as $video)
         
                         <!-- Single Blog Post -->
                         <div class="single-blog-post style2 mb-50 wow fadeInUp" data-wow-delay="300ms">
@@ -334,17 +326,16 @@
                             </div>
                             <div class="blog-content">
                                 {{-- <a href="#" class="post-tag">Featured</a> --}}
-                                <a href="#" class="post-title">{{$video->name}}</a>
+                                <a href="{{route('showvideo',['id'=>$video->id,'slug'=>slug($video->name)])}}" class="post-title">{{$video->name}}</a>
                                 <div class="post-meta">
                                     <a href="#"><img src="img/core-img/author2.png" alt=""> {{$video->user->name}}</a>
                                     <a href="#"><img src="img/core-img/calendar2.png" alt=""> {{$video->created_at->diffForHumans()}}</a>
-                                    <a href="#"><img src="img/core-img/chat2.png" alt=""> 5</a>
-                                    <a href="#"><img src="img/core-img/like2.png" alt=""> 12k</a>
+                                    <a href="#"><img src="img/core-img/chat2.png" alt=""> {{$video->comments->count()}}</a>
                                 </div>
                             </div>
                         </div>
                         @endforeach
-                        @foreach ($movie->videos()->Published()->orderBy('created_at','desc')->skip(1)->take(3)->get() as $video)
+                        @foreach ($movie1->take(3) as $video)
 
                         <!-- Single Blog Post -->
                         <div class="single-blog-post style4 d-flex mb-30 wow fadeInUp" data-wow-delay="300ms">
@@ -355,10 +346,9 @@
                             </div>
                             <div class="blog-content">
                                 {{-- <a href="#" class="post-tag">Featured</a> --}}
-                                <a href="#" class="post-title">{{$video->name}}</a>
+                                <a href="{{route('showvideo',['id'=>$video->id,'slug'=>slug($video->name)])}}" class="post-title">{{$video->name}}</a>
                                 <div class="post-meta">
-                                    <a href="#"><img src="img/core-img/chat2.png" alt=""> 5</a>
-                                    <a href="#"><img src="img/core-img/like2.png" alt=""> 12k</a>
+                                    <a href="#"><img src="img/core-img/chat2.png" alt=""> {{$video->comments->count()}}</a>
                                 </div>
                             </div>
                         </div>
@@ -369,7 +359,7 @@
                                 <h2>{{$tv->name}}</h2>
                             </div>
                             
-                                @foreach ($tv->videos()->Published()->orderBy('created_at','desc')->take(1)->get() as $video)
+                                @foreach ($tv1->take(1) as $video)
         
                                 <!-- Single Blog Post -->
                                 <div class="single-blog-post style2 mb-50 wow fadeInUp" data-wow-delay="300ms">
@@ -380,18 +370,17 @@
                                     </div>
                                     <div class="blog-content">
                                         {{-- <a href="#" class="post-tag">Featured</a> --}}
-                                        <a href="#" class="post-title">{{$video->name}}</a>
+                                        <a href="{{route('showvideo',['id'=>$video->id,'slug'=>slug($video->name)])}}" class="post-title">{{$video->name}}</a>
                                         <div class="post-meta">
                                             <a href="#"><img src="img/core-img/author2.png" alt=""> {{$video->user->name}}</a>
                                             <a href="#"><img src="img/core-img/calendar2.png" alt=""> {{$video->created_at->diffForHumans()}}</a>
-                                            <a href="#"><img src="img/core-img/chat2.png" alt=""> 5</a>
-                                            <a href="#"><img src="img/core-img/like2.png" alt=""> 12k</a>
+                                            <a href="#"><img src="img/core-img/chat2.png" alt=""> {{$video->comments->count()}}</a>
                                         </div>
                                     </div>
                                 </div>
                                 @endforeach
                         
-                            @foreach ($tv->videos()->Published()->orderBy('created_at','desc')->take(3)->get() as $video)
+                            @foreach ($tv1->take(3) as $video)
     
                             <!-- Single Blog Post -->
                             <div class="single-blog-post style4 d-flex mb-30 wow fadeInUp" data-wow-delay="300ms">
@@ -402,10 +391,9 @@
                                 </div>
                                 <div class="blog-content">
                                     {{-- <a href="#" class="post-tag">Featured</a> --}}
-                                    <a href="#" class="post-title">{{$video->name}}</a>
+                                    <a href="{{route('showvideo',['id'=>$video->id,'slug'=>slug($video->name)])}}" class="post-title">{{$video->name}}</a>
                                     <div class="post-meta">
-                                        <a href="#"><img src="img/core-img/chat2.png" alt=""> 5</a>
-                                        <a href="#"><img src="img/core-img/like2.png" alt=""> 12k</a>
+                                        <a href="#"><img src="img/core-img/chat2.png" alt=""> {{$video->comments->count()}}</a>
                                     </div>
                                 </div>
                             </div>

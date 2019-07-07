@@ -188,7 +188,7 @@ video Control
                       <div class="col-md-4">
                         <div class="form-group">
                           <label class="bmd-label-floating"> Photo</label>
-                          <input type="file" class="form-control @error('image') is-invalid @enderror"  name="image" value="" style="position:unset">
+                          <input type="file" class="form-control @error('image') is-invalid @enderror"  name="image" value="" style=" opacity: 1; position: initial ; color:lightcoral">
                           
                           @error('image')
                           <span class="invalid-feedback" role="alert">

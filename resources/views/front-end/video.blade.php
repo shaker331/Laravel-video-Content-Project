@@ -1,5 +1,6 @@
 @include('front-end.include.header')
     <!-- ##### Header Area End ##### -->
+    <title>{{$title}} </title>
 
     <!-- ##### Post Details Area Start ##### -->
     <section class="post-news-area section-padding-100-0">
@@ -27,8 +28,7 @@
 
                                             <a href="#"><img src="{{asset('img/core-img/author2.png')}}" alt=""> {{$videos->user->name}}</a>
                                             <a href="#"><img src="{{asset('img/core-img/calendar2.png')}}" alt=""> {{$videos->created_at}}</a>
-                                            <a href="#"><img src="{{asset('img/core-img/chat2.png')}}" alt=""> 5</a>
-                                            <a href="#"><img src="{{asset('img/core-img/like2.png')}}" alt=""> 12k</a>
+                                            <a href="#"><img src="{{asset('img/core-img/chat2.png')}}" alt=""> {{$videos->comments->count()}}</a>
                                         </div>
                                     <!-- Like Dislike Share -->
                                     <div class="like-dislike-share mt-50">
@@ -65,7 +65,6 @@
                                         <div class="d-flex">
                                             <a href="#" class="post-author">{{$comment->user->name}}</a>
                                             <a href="#" class="post-date">{{$comment->created_at->diffForHumans()}}</a>
-                                            <a href="#" class="reply">Reply</a>
                                         </div>
                                         <p>{{$comment->comment}}</p>
                                     </div>

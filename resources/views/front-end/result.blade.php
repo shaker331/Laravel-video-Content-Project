@@ -15,17 +15,17 @@
 		</div>
 	</div>
 
-	
+    @if ($videos->count()>0)
+   
+
     <!-- ##### Post Details Area Start ##### -->
     <section class="post-news-area section-padding-100-0">
         <div class="container">
             <div class="row">
-                    @if ($videos->count()>0)
-
+                    @foreach ($videos as $video)
                 <!-- Post Details Content Area -->
-                @foreach ($videos as $video)
 
-                <div class="col-12 col-lg-8">
+                <div class="col-4 col-lg-4">
                     <div class="post-details-content mb-100">
                         <div class="single-blog-post style2 mb-50">
                             <div class="blog-thumb mb-30">
@@ -50,32 +50,27 @@
                                 </div>
                             </div>
                         </div>
-                  
-                </div>
+                    </div>
+               
                 </div>
                 @endforeach
-                @else 
-	<h1>No Result</h1>
-    @endif 
-                <!-- Sidebar Widget -->
-                <div class="col-12 col-sm-9 col-md-6 col-lg-4">
-                    <div class="sidebar-area mb-100">
-                        <!-- Single Sidebar Widget -->
-                        <div class="single-widget-area border-style mb-50">
-                            <h2 class="widget-title">Newsletter</h2>
-                            <p>Subscribe to our newsletter and join our thousand subscribers.</p>
-                            <form action="#" method="post">
-                                <input type="search" class="form-control" name="newsletter-search" placeholder="Your E-mail Address">
-                                <button type="submit" class="btn videomag-btn">Subscribe</button>
-                            </form>
-                        </div>
-                        @include('front-end.include.side-bar')
-                    </div>
-                </div>
+                
+        @else 
+        <h1>No Result</h1>
+        @endif 
+        <div class="col-md-4 ">
+                   
+                  @include('front-end.include.side-bar')
+       
+        </div>
+
+    </div>
             </div>
-        
-            
-            
-                </section>
+           
+
+                <!-- Sidebar Widget -->
+               
+  </section>
+                 
 	@include('front-end.include.footer')
 

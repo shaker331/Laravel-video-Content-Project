@@ -21,5 +21,5 @@ class Skills extends Seeder
         \App\Models\Skill::create($Array);
        }
     }
-    }
+    
 }

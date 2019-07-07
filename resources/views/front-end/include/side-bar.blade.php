@@ -14,8 +14,7 @@
             <a href="{{route('showCategory',['id'=>$video->category->id,'slug'=>slug($video->category->name)])}}" class="post-tag">{{$video->category->name}}</a>
             <a href="{{route('showvideo',['id'=>$video->id,'slug'=>slug($video->name)])}}" class="post-title">{{$video->name}}</a>
             <div class="post-meta">
-                <a href="#"><img src="img/core-img/chat2.png" alt=""> 5</a>
-                <a href="#"><img src="img/core-img/like2.png" alt=""> 12k</a>
+                <a href="#"><img src="img/core-img/chat2.png" alt="">  {{$video->comments->count()}}</a>
             </div>
         </div>
     </div>
@@ -30,7 +29,6 @@
     <!-- Single Blog Post -->
     <div class="single-blog-post style3">
         <img src="{{URL::asset("$video->image")}}" alt="">
-        <img src="img/bg-img/15.jpg" alt="">
             <!-- Play Button -->
             <a href="{{$video->youtube}}" class="video-play-btn style2"><i class="fa fa-play"></i></a>
         </div>
@@ -40,14 +38,13 @@
             <div class="post-meta d-flex justify-content-between">
                 <a href="#"><img src="img/core-img/calendar2.png" alt="">{{$video->created_at}}</a>
                 <div class="d-flex">
-                    <a href="#"><img src="img/core-img/chat2.png" alt=""> 5</a>
-                    <a href="#"><img src="img/core-img/like2.png" alt=""> 12k</a>
+                    <a href="#"><img src="img/core-img/chat2.png" alt=""> {{$video->comments->count()}}</a>
                 </div>
             </div>
         </div>
     </div>
     @endforeach
-</div>
+
 
 <!-- Single Sidebar Widget -->
 <div class="single-widget-area border-style mb-50">
@@ -67,8 +64,8 @@
             <div class="post-meta d-flex justify-content-between">
                 <a href="#"><img src="img/core-img/calendar2.png" alt=""> {{$video->created_at->diffForHumans()}}</a>
                 <div class="d-flex">
-                    <a href="#"><img src="img/core-img/chat2.png" alt=""> 5</a>
-                    <a href="#"><img src="img/core-img/like2.png" alt=""> 12k</a>
+                    <a href="#"><img src="img/core-img/chat2.png" alt="">  {{$video->comments->count()}}</a>
+                   
                 </div>
             </div>
         </div>

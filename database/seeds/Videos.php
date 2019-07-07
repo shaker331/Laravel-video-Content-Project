@@ -24,7 +24,7 @@ class Videos extends Seeder
             'published'=>1,
             'image'=>'upload/videoimg\15615449071.jpg',
             'user_id'=>1,
-            'des'=>'ENGLISH MOVIE 2019 - NEWYORK HAS FALLEN | HOLLYWOOD Full Movies 2019 | English Movies 2019'
+            'desc'=>'ENGLISH MOVIE 2019 - NEWYORK HAS FALLEN | HOLLYWOOD Full Movies 2019 | English Movies 2019'
 
         ];
         \App\Models\Video::create($Array);

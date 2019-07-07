@@ -1,5 +1,6 @@
 @include('front-end.include.header')
 
+<title>{{$title}} </title>
 
 
 	<!-- SECTION -->

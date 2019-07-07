@@ -39,11 +39,18 @@
                     <div class="video-catagory">
                         <h5 class="widget-title">Video Categories</h5>
                         <ul>
+                            @foreach ($categories as $cat)
+                                
+                            <li><a href="{{route('showCategory',['id'=>$cat->id,'slug'=>slug($cat->name)])}}"><span>{{$cat->name}}</span> <span>{{$cat->videos->count()}}</span></a></li>
+                            @endforeach
+
+
+{{-- 
                             <li><a href="{{route('showCategory',['id'=>$music->id,'slug'=>slug($music->name)])}}"><span>{{$music->name}}</span> <span>{{$catcount}}</span></a></li>
                             <li><a href="{{route('showCategory',['id'=>$fashion->id,'slug'=>slug($fashion->name)])}}"><span>{{$fashion->name}}</span> <span>{{$catcount1}}</span></a></li>
                             <li><a href="{{route('showCategory',['id'=>$sport->id,'slug'=>slug($sport->name)])}}"><span>{{$sport->name}}</span> <span>{{$catcount2}}</span></a></li>
                             <li><a href="{{route('showCategory',['id'=>$movie->id,'slug'=>slug($movie->name)])}}"><span>{{$movie->name}}</span> <span>{{$catcount3}}</span></a></li>
-                            <li><a href="{{route('showCategory',['id'=>$tv->id,'slug'=>slug($tv->name)])}}"><span>{{$tv->name}}</span> <span>{{$catcount4}}</span></a></li>
+                            <li><a href="{{route('showCategory',['id'=>$tv->id,'slug'=>slug($tv->name)])}}"><span>{{$tv->name}}</span> <span>{{$catcount4}}</span></a></li> --}}
 
                         </ul>
                     </div>

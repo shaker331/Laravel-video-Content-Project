@@ -10,7 +10,6 @@
         <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     
         <!-- Title -->
-        <title>Video Garden </title>
     
         <!-- Favicon -->
         <link rel="icon" href="{{asset('img/core-img/favicon.ico')}}">

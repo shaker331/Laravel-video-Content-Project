@@ -17,8 +17,6 @@ class Tags extends Seeder
 
         $Array=[
             'name'=>$faker->word,
-            'meta_keywords'=>$faker->name,
-            'meta_des'=>$faker->name,
         ];
         \App\Models\Tag::create($Array);
        }

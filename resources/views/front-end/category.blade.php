@@ -1,6 +1,6 @@
 @include('front-end.include.header')
 
-
+<title>{{$title}}</title>
     
     <!-- ##### Tabs Area Start ##### -->
     <div class="video-mag-tabs-area mt-50 wow fadeInUp" data-wow-delay="200ms">
@@ -21,8 +21,8 @@
                                    
                                     <!-- Single Blog Post -->
                                     <div class="single-blog-post style2">
-                                        <div class="blog-thumb mb-30">
-                                            <img  src="{{URL::asset("$latest->image")}}" alt="">
+                                        <div class="blog-thumb mb-20">
+                                            <img  src="{{URL::asset("$latest->image")}}" alt="" >
                                             <!-- Play Button -->
                                             <a href="{{$latest->youtube}}" class="video-play-btn style2"><i class="fa fa-play"></i></a>
                                         </div>
@@ -32,8 +32,7 @@
                                             <div class="post-meta">
                                                 <a href="#"><img src="{{asset('img/core-img/author2.png')}}" alt=""> {{$latest->user->name}}</a>
                                                 <a href="#"><img src="{{asset('img/core-img/calendar2.png')}}" alt=""> {{$latest->created_at->diffForHumans()}}</a>
-                                                <a href="#"><img src="{{asset('img/core-img/chat2.png')}}" alt=""> 5</a>
-                                                <a href="#"><img src="{{asset('img/core-img/like2.png')}}" alt=""> 12k</a>
+                                                <a href="#"><img src="{{asset('img/core-img/chat2.png')}}" alt=""> {{$latest->comments->count()}}</a>
                                             </div>
                                         </div>
                                     </div>
@@ -71,8 +70,7 @@
                                     <div class="post-meta">
                                         <a href="#"><img src="{{asset('img/core-img/author2.png')}}" alt=""> {{$video->user->name}}</a>
                                         <a href="#"><img src="{{asset('img/core-img/calendar2.png')}}" alt=""> {{$video->created_at->diffForHumans()}}</a>
-                                        <a href="#"><img src="{{asset('img/core-img/chat2.png')}}" alt=""> 5</a>
-                                        <a href="#"><img src="{{asset('img/core-img/like2.png')}}" alt=""> 12k</a>
+                                        <a href="#"><img src="{{asset('img/core-img/chat2.png')}}" alt=""> {{$video->comments->count()}}</a>
                                     </div>
                                 </div>
                             </div>
@@ -102,24 +100,5 @@
     </section>
     <!-- ##### Catagory Area End ##### -->
 
-    <!-- ##### Footer Area Start ##### -->
-    <footer class="footer-area section-padding-100">
-        <div class="container-fluid">
-            <div class="row justify-content-between">
-                <!-- Footer Content -->
-                <div class="col-12 col-lg-4">
-                    <div class="footer-content">
-                        <!-- Logo -->
-                        <a href="index.html" class="foo-logo"><img src="img/core-img/logo.png" alt=""></a>
-                        <p>Donec cursus eros et risus scelerisque, sit amet ultrices arcu scelerisque. Sed consequat fermentum turpis, vulputate maximus.Donec cursus eros et risus scelerisque, sit amet ultrices arcu scelerisque. Sed consequat fermentum turpis, vulputate maximus</p>
-                        <div class="footer-social-info d-flex">
-                            <a href="#"><i class="fa fa-pinterest"></i></a>
-                            <a href="#"><i class="fa fa-facebook"></i></a>
-                            <a href="#"><i class="fa fa-twitter"></i></a>
-                            <a href="#"><i class="fa fa-dribbble"></i></a>
-                            <a href="#"><i class="fa fa-behance"></i></a>
-                            <a href="#"><i class="fa fa-linkedin"></i></a>
-                        </div>
-                    </div>
-                </div>
+  
                @include('front-end.include.footer')
